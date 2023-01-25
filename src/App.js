@@ -7,11 +7,12 @@ const App = () => {
 
   useEffect(() => {
     if(msg !== ""){
-      
+      axios.get('/', (req, res, next) => {
+        res.set({ 'Access-Control-Allow-Origin': '*' });
+      });
       axios.get(apiUrl)
       .then(function (response) {
         console.log(response);
-        response.set({ 'Access-Control-Allow-Origin': '*' });
       })
       .catch(function (error) {
         console.log(error);
